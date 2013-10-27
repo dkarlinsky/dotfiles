@@ -60,6 +60,13 @@ install_dotfiles () {
   backup_all=false
   skip_all=false
 
+  # link zsh themes
+  for theme in `find $DOTFILES_ROOT/zsh -maxdepth 2 -name \*.zsh-theme`
+  do
+    dest="$HOME/.oh-my-zsh/themes/`basename $theme`"
+    link_files $theme $dest
+  done
+
   for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
   do
     dest="$HOME/.`basename \"${source%.*}\"`"
@@ -118,6 +125,7 @@ install_dotfiles () {
     fi
 
   done
+
 }
 
 setup_gitconfig
