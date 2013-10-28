@@ -9,7 +9,7 @@ function bgulabs() {
 }
 
 function copytobgu() {
-  scp $1 lidanh@lvs.cs.bgu.ac.il:$2
+  scp -r $1 lidanh@lvs.cs.bgu.ac.il:$2
 }
 
 function bgu-authorized-host() {
