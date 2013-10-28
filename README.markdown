@@ -11,7 +11,7 @@ up into the main areas I used (Ruby, git, system libraries, and so on), so I
 structured the project accordingly.
 
 ## prerequisites
-[Install oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) for configuring zsh shell.
+[Install oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh#setup) for configuring zsh shell.
 
 [Install spf13](vim.spf13.com/#install) for configuring vim.
 
