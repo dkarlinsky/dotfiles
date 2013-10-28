@@ -10,7 +10,7 @@ project being much more topic-centric. I realized I could split a lot of things
 up into the main areas I used (Ruby, git, system libraries, and so on), so I
 structured the project accordingly.
 
-## prerequisites:
+## prerequisites
 [Install oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) for configuring zsh shell.
 
 [Install spf13](vim.spf13.com/#install) for configuring vim.
