@@ -9,7 +9,7 @@ function bgulabs() {
 }
 
 function copytobgu() {
-  scp -r $1 lidanh@lvs.cs.bgu.ac.il:$2
+  scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $1 lidanh@lvs.cs.bgu.ac.il:"$2"
 }
 
 function bgu-authorized-host() {
