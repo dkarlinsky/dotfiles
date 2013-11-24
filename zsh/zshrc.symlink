@@ -9,7 +9,8 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Dropbox/open_source
-export SPL=~/Dropbox/BGU/SPL
+alias spl='cd ~/Dropbox/BGU/SPL'
+alias dotfiles='cd ~/.dotfiles'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
