@@ -8,7 +8,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Dropbox/open_source
+alias projects='cd ~/Dropbox/open_source'
 alias spl='cd ~/Dropbox/BGU/SPL'
 alias dotfiles='cd ~/.dotfiles'
 
