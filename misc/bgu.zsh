@@ -12,6 +12,10 @@ function copytobgu() {
   scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $1 lidanh@lvs.cs.bgu.ac.il:"$2"
 }
 
+function copyfrombgu() {
+  scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no lidanh@lvs.cs.bgu.ac.il:"$1" $2
+}
+
 function bgu-authorized-host() {
   scp ~/.ssh/id_rsa.pub lidanh@lvs.cs.bgu.ac.il:.ssh/authorized_keys
 }

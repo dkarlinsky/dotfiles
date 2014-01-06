@@ -11,6 +11,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 alias projects='cd ~/Dropbox/open_source'
 alias spl='cd ~/Dropbox/BGU/SPL'
 alias dotfiles='cd ~/.dotfiles'
+alias tmux='tmux attach -t base || tmux new -s base'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -79,7 +80,7 @@ unset config_files
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew bundler heroku osx rails rails4 rake ruby rvm sublime vagrant)
+plugins=(git brew bundler heroku osx rake ruby sublime vagrant)
 
 [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] && source "$HOME/.rvm/contrib/ps1_functions"
 
