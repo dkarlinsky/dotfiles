@@ -77,8 +77,9 @@ bind k select-pane -U
 bind l select-pane -R
 
 # split-window
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
 
 
 # reload config
@@ -96,5 +97,6 @@ set-window-option -g mode-mouse on
 # color
 set -g default-terminal "screen-256color"
 
+set-option -g default-command "reattach-to-user-namespace -l $SHELL"
 
 source '/usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf'

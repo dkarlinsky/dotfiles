@@ -9,7 +9,6 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 # your project folder that we can `c [tab]` to
 alias projects='cd ~/Dropbox/open_source'
-alias spl='cd ~/Dropbox/BGU/SPL'
 alias dotfiles='cd ~/.dotfiles'
 alias tmux='tmux attach -t base || tmux new -s base'
 
@@ -80,7 +79,7 @@ unset config_files
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew bundler heroku osx rake ruby sublime vagrant)
+plugins=(git brew bundler heroku osx rake ruby sublime npm bower vagrant)
 
 [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] && source "$HOME/.rvm/contrib/ps1_functions"
 
