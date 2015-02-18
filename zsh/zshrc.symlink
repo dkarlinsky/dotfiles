@@ -10,6 +10,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 # your project folder that we can `c [tab]` to
 alias projects='cd ~/Dropbox/open_source'
 alias dotfiles='cd ~/.dotfiles'
+alias compi='cd ~/Google\ Drive/\$SE/ה/עקרונות\ הקומפילציה\ \(202-1-3021\)/Assignments/'
 alias tmux='tmux attach -t base || tmux new -s base'
 
 # Set name of the theme to load.
@@ -95,4 +96,4 @@ source $ZSH/oh-my-zsh.sh
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 # Customize to your needs...
-export PATH=$PATH:.:bin:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$DOTFILES/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/usr/local/heroku/bin:$HOME/.rvm/bin:/usr/local/share/python
+export PATH=$PATH:.:bin:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$DOTFILES/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/usr/local/heroku/bin:$HOME/.rvm/bin
