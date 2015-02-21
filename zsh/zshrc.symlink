@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh configuration.
+
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/.dotfiles
 
@@ -8,9 +8,8 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # your project folder that we can `c [tab]` to
-alias projects='cd ~/Dropbox/open_source'
+alias projects='cd ~/Projects'
 alias dotfiles='cd ~/.dotfiles'
-alias compi='cd ~/Google\ Drive/\$SE/ה/עקרונות\ הקומפילציה\ \(202-1-3021\)/Assignments/'
 alias tmux='tmux attach -t base || tmux new -s base'
 
 # Set name of the theme to load.
@@ -80,7 +79,7 @@ unset config_files
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew bundler heroku osx rake ruby sublime npm bower vagrant)
+plugins=(git brew bundler mvn osx ruby npm bower vagrant)
 
 [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] && source "$HOME/.rvm/contrib/ps1_functions"
 
@@ -94,6 +93,10 @@ source $ZSH/oh-my-zsh.sh
 # for config_file ($DOTFILES/**/completion.sh) source $config_file
 
 [ -n "$TMUX" ] && export TERM=screen-256color
+
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home)
+export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
 
 # Customize to your needs...
 export PATH=$PATH:.:bin:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$DOTFILES/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/usr/local/heroku/bin:$HOME/.rvm/bin
