@@ -2,21 +2,20 @@
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/.dotfiles
 
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="prose"
 
+# RVM
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # your project folder that we can `c [tab]` to
 alias projects='cd ~/Projects'
 alias dotfiles='cd ~/.dotfiles'
 alias tmux='tmux attach -t base || tmux new -s base'
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="prose"
 
 # all of our zsh files
 typeset -U config_files
@@ -45,10 +44,6 @@ do
 done
 
 unset config_files
-
-# Example aliases
-# alias zshconfig="subl ~/.zshrc"
-# alias ohmyzsh="subl ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -79,24 +74,18 @@ unset config_files
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew bundler mvn osx ruby npm bower vagrant)
+# REMOVE NPM, VERY SLOW!!
+plugins=(git brew mvn vagrant bower osx sbt)
 
 [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] && source "$HOME/.rvm/contrib/ps1_functions"
 
 source $ZSH/oh-my-zsh.sh
 
-# initialize autocomplete here, otherwise functions won't be loaded
-# autoload -U compinit
-# compinit
-
-# load every completion after autocomplete loads
-# for config_file ($DOTFILES/**/completion.sh) source $config_file
-
 [ -n "$TMUX" ] && export TERM=screen-256color
 
-# Java
+# Java, Maven
 export JAVA_HOME=$(/usr/libexec/java_home)
 export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
 
 # Customize to your needs...
-export PATH=$PATH:.:bin:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$DOTFILES/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/usr/local/heroku/bin:$HOME/.rvm/bin
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$DOTFILES/bin
