@@ -1,0 +1,225 @@
+" Vundle Basics {
+  set nocompatible
+  filetype off
+  set rtp+=~/.vim/bundle/Vundle.vim
+" }
+
+call vundle#begin()
+" Plugins {
+  Plugin 'gmarik/Vundle.vim'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'bling/vim-airline'
+  Plugin 'spf13/vim-autoclose'
+  Plugin 'spf13/vim-colors'
+  Plugin 'tpope/vim-surround'
+  Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+  Plugin 'tpope/vim-fugitive'
+" }
+call vundle#end()             " required
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" General {
+  filetype plugin indent on       " Automatically detect file types
+  syntax on                       " Syntax highlighting
+  set mouse=a                     " Enable mouse usage
+  scriptencoding utf-8  
+
+  set history=1000                " Increase history storage
+  set hidden                      " Allow buffer switching without saving
+  set iskeyword-=.                " '.' is an end of word designator
+  set iskeyword-=#                " '#' is an end of word designator
+  set iskeyword-=-                " '-' is an end of word designator
+
+  set backup
+  set undofile                    " persistent undo
+  set undolevels=1000             " Maximum number of changes that can be undone
+  set undoreload=10000            " Maximum number lines to save for undo on a buffer reload
+" }
+
+" Vim UI {
+  
+  set background=dark
+
+  if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and
+                                " Selected characters/lines in visual mode
+  endif
+
+  if has('statusline')
+    set laststatus=2
+
+    " Broken down into easily includeable segments
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    if !exists('g:override_spf13_bundles')
+        set statusline+=%{fugitive#statusline()} " Git Hotness
+    endif
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+  endif
+
+  " highlight clear SignColumn      " Sign Column should match background
+  " highlight clear LineNr          " Current line number row will have same background color in relative mode
+
+  :command WQ wq
+  :command Wq wq
+  :command W w
+  :command Q q
+
+  set backspace=indent,eol,start  
+  set linespace=0 
+  set nu                          " Line numbers on
+  set showmatch                   " Show matching brackets/parenthesis
+  set incsearch                   " Find as you type search
+  set hlsearch                    " Highlight search terms
+  set ignorecase                  " Case insensitive search
+  set smartcase                   " Case insensitive when uc present
+  set wildmenu                    " Show list instead of just completing
+  set wildmode=list:longest,full  " <Tab> completion, list matches, then longest common part, then all
+  set scrolloff=3                 " Minimum lines to keep above and below cursor
+  set foldenable                  " Auto fold code
+  set list
+  set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+" }
+
+" Formatting {
+  set nowrap                      " Do not wrap long lines
+  set autoindent                  " Indent at the same level of the previous line
+  set shiftwidth=4                " Use indents of 4 spaces
+  set expandtab                   " Tabs are spaces, not tabs
+  set tabstop=4                   " An indentation every four columns
+  set softtabstop=4               " Let backspace delete indent
+  set nojoinspaces                " Prevents inserting two spaces after punctuation on a join
+
+  autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+" }
+
+" Key Mappings {
+  let mapleader = ','
+  let maplocalleader = '_'
+
+  " Code folding options
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
+    nmap <leader>f5 :set foldlevel=5<CR>
+    nmap <leader>f6 :set foldlevel=6<CR>
+    nmap <leader>f7 :set foldlevel=7<CR>
+    nmap <leader>f8 :set foldlevel=8<CR>
+    nmap <leader>f9 :set foldlevel=9<CR>
+
+  " Find merge conflict markers
+    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
+  " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+
+  " Some helpers to edit mode
+  " http://vimcasts.org/e/14
+    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+    map <leader>ew :e %%
+    map <leader>es :sp %%
+    map <leader>ev :vsp %%
+    map <leader>et :tabe %%
+" }
+
+" Plugins {
+
+  " NerdTree {
+    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+      let g:NERDShutUp=1
+
+      map <C-e> :NERDTreeToggle<CR>
+      map <leader>e :NERDTreeFind<CR>
+      nmap <leader>nt :NERDTreeFind<CR>
+
+      let NERDTreeShowBookmarks=1
+      let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+      let NERDTreeChDirMode=0
+      let NERDTreeQuitOnOpen=1
+      let NERDTreeMouseMode=2
+      let NERDTreeShowHidden=1
+      let NERDTreeKeepTreeInNewTab=1
+      let g:nerdtree_tabs_open_on_gui_startup=0
+    endif
+  " }
+
+  " CtrlP {
+    if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+      let g:ctrlp_working_path_mode = 'ra'
+      nnoremap <silent> <D-t> :CtrlP<CR>
+      nnoremap <silent> <D-r> :CtrlPMRU<CR>
+      let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+        \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
+      if executable('ag')
+        let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+      elseif executable('ack-grep')
+        let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+      elseif executable('ack')
+        let s:ctrlp_fallback = 'ack %s --nocolor -f'
+      else
+        let s:ctrlp_fallback = 'find %s -type f'
+      endif
+
+      let g:ctrlp_user_command = {
+        \ 'types': {
+          \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+          \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+        \ },
+        \ 'fallback': s:ctrlp_fallback
+      \ }
+    endif
+  " }
+
+  " Fugitive {
+    if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    endif
+  "}
+
+  " vim-airline {
+    " Set configuration options for the statusline plugin vim-airline.
+    " Use the powerline theme and optionally enable powerline symbols.
+    " To use the symbols , , , , , , and .in the statusline
+    " segments add the following to your .vimrc.before.local file:
+    "   let g:airline_powerline_fonts=1
+    " If the previous symbols do not render for you then install a
+    " powerline enabled font.
+
+    " See `:echo g:airline_theme_map` for some more choices
+    " Default in terminal vim is 'dark'
+    if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+        set laststatus=2
+        let g:airline_powerline_fonts = 1
+    endif
+  " }
+
+" }
