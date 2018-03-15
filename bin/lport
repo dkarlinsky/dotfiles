@@ -1,0 +1,9 @@
+#!/bin/sh
+
+port=$1
+
+if !([[ -n $port ]];) then
+    echo No port argument provided.
+    exit
+fi
+lsof -i4TCP:$1
