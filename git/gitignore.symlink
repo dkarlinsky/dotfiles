@@ -6,4 +6,4 @@
 .httr-oauth
 *.iml
 .idea/
-*.log
+#*.log
